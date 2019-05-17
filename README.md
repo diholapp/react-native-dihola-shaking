@@ -1,7 +1,17 @@
+# DiHola Shaking API for Android
 
-# react-native-dihola-shaking
+DiHola Shaking API makes it easy to build fast and reliable ways to communicate between devices, just by shaking them.
+We provide such a secure and flexible protocol that this technology can be applied in any form of data exchange: Payment processing, file sharing, social networking, verification processes, etc.
 
-## Getting started
+## Index
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Methods](#methods)
+4. [Error Codes](#error-codes)
+
+
+Installation
+-------
 
 `$ npm install react-native-dihola-shaking --save`
 
@@ -22,7 +32,7 @@
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNDiHolaShakingPackage;` to the imports at the top of the file
+  - Add `import com.diholapp.RNDiHolaShakingPackage;` to the imports at the top of the file
   - Add `new RNDiHolaShakingPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
@@ -33,21 +43,39 @@
   	```
       compile project(':react-native-dihola-shaking')
   	```
+    
+    
+Usage
+-------
 
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNDiHolaShaking.sln` in `node_modules/react-native-dihola-shaking/windows/RNDiHolaShaking.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Di.Hola.Shaking.RNDiHolaShaking;` to the usings at the top of the file
-  - Add `new RNDiHolaShakingPackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
-
-## Usage
 ```javascript
-import RNDiHolaShaking from 'react-native-dihola-shaking';
+import { ShakingAPI, ShakingCodes } from 'react-native-dihola-shaking';
 
-// TODO: What to do with the module?
-RNDiHolaShaking;
+ShakingAPI.configure({
+    API_KEY: "<API_KEY>",
+    user: "<USER_ID>",
+    onShaking: () => {
+      console.log("SHAKEN");
+    },
+    onSuccess: (result) => {
+      if(result.length) console.log("You connected with: " + result);
+      else console.log("Couldn't find anyone...");
+    },
+    onError: (error) => {
+      console.log(error);
+    }
+}).start();
 ```
+
+Error Codes
+----------
+
+| Name                     |  Description|
+| ---------------------    |  -------- |
+| LOCATION_PERMISSION_ERROR| Location permission has not been accepted|
+| LOCATION_DISABLED        | Location is disabled|
+| SENSOR_ERROR             | The sensor devices are not available |
+| AUTHENTICATION_ERROR     | API key invalid|
+| API_KEY_EXPIRED          | API key expired|
+| SERVER_ERROR             | Server is not available|
   
