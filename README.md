@@ -102,8 +102,11 @@ ShakingAPI.configure(options);
     | -- | -- | -- | -- | -- |
     | API_KEY | `string` | -- | `yes` | Get one at www.diholapp.com |
     | user | `string` | -- | `yes` |User identifier |
+    | lat | `double` | Device current location | `no` | Latitude coordinates
+    | lng | `double` | Device current location | `no` | Longitude coordinates
     | sensibility | `double` | `25` | `no` | Shaking sensibility
-    | distanceFilter | `double` | `100` | `no` |maximum distance (in meters) between two devices to be eligible for pairing.
+    | distanceFilter | `double` | `100` | `no` | Maximum distance (in meters) between two devices to be eligible for pairing.
+    | timingFilter | `double` | `2000` | `no` | Maximum time difference (in milliseconds) between two shaking events to be eligible for pairing.
     | keepSearching | `bool` | `false` | `no` | A positive value would allow to keep searching even though if a user has been found. This could allow to pair with multiple devices. The response time will be affected by the timingFilter value.
     | onShaking | `function` | -- | `no` | Invoked when the shaking event is triggered
     | onSuccess | `function` | -- | `yes` | Invoked with a list of paired users
