@@ -19,7 +19,7 @@ Installation
 
 `$ react-native link react-native-dihola-shaking`
 
-**Note**: Manual installation step 4 is required for Android and iOS.
+**Note**: Manual installation step 4 for both Android and iOS is required.
 
 ### Manual installation
 
@@ -82,7 +82,7 @@ Usage
 -------
 
 ```javascript
-import { ShakingAPI, ShakingCodes } from 'react-native-dihola-shaking';
+import { ShakingAPI } from 'react-native-dihola-shaking';
 
 ShakingAPI.configure({
 
@@ -90,12 +90,13 @@ ShakingAPI.configure({
     user: "<USER_ID>",
     
     onShaking: () => {
-      console.log("SHAKEN");
+      console.log("Shaking event detected");
     },
     
     onSuccess: (result) => {
-      if(result.length) console.log("You connected with: " + result);
-      else console.log("Couldn't find anyone...");
+      (result.length > 0) ? 
+        console.log("You connected with: " + result) :
+        console.log("Couldn't find anyone...");
     },
     
     onError: (error) => {
@@ -141,7 +142,7 @@ ShakingAPI.configure(options);
     | distanceFilter | `double` | `100` | `no` | Maximum distance (in meters) between two devices to be eligible for pairing.
     | timingFilter | `double` | `2000` | `no` | Maximum time difference (in milliseconds) between two shaking events to be eligible for pairing.
     | keepSearching | `bool` | `false` | `no` | A positive value would allow to keep searching even though if a user has been found. This could allow to pair with multiple devices. The response time will be affected by the timingFilter value.
-    | onShaking | `function` | -- | `no` | Invoked when the shaking event is triggered
+    | onShaking | `function` | -- | `no` | Invoked when the shaking event is detected
     | onSuccess | `function` | -- | `yes` | Invoked with a list of paired users
     | onError | `function` | -- | `yes` | Invoked whenever an error is encountered
 
@@ -281,6 +282,7 @@ Error Codes
 Example:
 
 ```javascript
+import { ShakingAPI, ShakingCodes } from 'react-native-dihola-shaking';
 
 ShakingAPI.configure({
 
