@@ -1,11 +1,16 @@
-
-#if __has_include("RCTBridgeModule.h")
-#import "RCTBridgeModule.h"
-#else
 #import <React/RCTBridgeModule.h>
-#endif
+#import <CoreMotion/CoreMotion.h>
 
-@interface RNDiHolaShaking : NSObject <RCTBridgeModule>
+@interface Accelerometer : NSObject <RCTBridgeModule> {
+    CMMotionManager *_motionManager;
+}
+
+- (void) isAvailableWithResolver:(RCTPromiseResolveBlock) resolve
+         rejecter:(RCTPromiseRejectBlock) reject;
+- (void) setUpdateInterval:(double) interval;
+- (void) getUpdateInterval:(RCTResponseSenderBlock) cb;
+- (void) getData:(RCTResponseSenderBlock) cb;
+- (void) startUpdates;
+- (void) stopUpdates;
 
 @end
-  

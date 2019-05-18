@@ -188,7 +188,7 @@ export default ShakingAPI = {
   },
 
   requestLocationIOS: function(){
-    alert("Not implemented yet");
+    this.getCurrentPosition();
   },
 
   requestLocationAndroid: async function(){
