@@ -1,4 +1,4 @@
-import { PermissionsAndroid, Platform } from "react-native";
+import { PermissionsAndroid, Platform, AppState } from "react-native";
 import { map, filter } from "rxjs/operators";
 import * as Sensors from "./sensors";
 import ShakingCodes from "./codes";
@@ -29,15 +29,24 @@ export default ShakingAPI = {
 
   stopped: true,
 
+  appStateEventListener: false,
+
   start: function(){
     this.stopped = false;
     this.requestLocation();
     this.subscribe();
+
+    if(!this.appStateEventListener){
+      this.appStateEventListener = true;
+      AppState.addEventListener('change', this._handleAppStateChange.bind(this));
+    }
   },
 
   stop: function(){
     this.stopped = true;
     this.subscription && this.subscription.unsubscribe();
+
+    AppState.removeEventListener('change', this._handleAppStateChange.bind(this));
   },
 
   simulate: function(){
@@ -210,6 +219,7 @@ export default ShakingAPI = {
       (position) => {
           this.lat = position.coords.latitude;
           this.lng = position.coords.longitude;
+          console.log(position)
       },
       (error) => {
           // TODO: onError
@@ -224,5 +234,14 @@ export default ShakingAPI = {
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );
+  },
+
+  _handleAppStateChange: function(nextAppState) {
+    if (nextAppState === 'active') {
+      this.start();
+    }
+    else {
+      this.stop();
+    }
   }
 }

@@ -1,18 +1,54 @@
 {
-  "name": "react-native-di-hola-shaking",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "_from": "react-native-dihola-shaking",
+  "_id": "react-native-dihola-shaking@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-QsrMz29Pm/CHvg/V0ReMQ4soRlnOwKtLh7O4q4B3CsBKV9oNhI83kEId114CqGcxkKEn4xlABQsJaySth2FGxw==",
+  "_location": "/react-native-dihola-shaking",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-native-dihola-shaking",
+    "name": "react-native-dihola-shaking",
+    "escapedName": "react-native-dihola-shaking",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-dihola-shaking/-/react-native-dihola-shaking-1.0.0.tgz",
+  "_shasum": "3a9d043bd9a12a553b9747deeb3c91add26ad7b3",
+  "_spec": "react-native-dihola-shaking",
+  "_where": "/Users/glow/Desktop/Projects/ShakingProjectRN",
+  "author": {
+    "name": "DiHola S.L."
+  },
+  "bugs": {
+    "url": "https://github.com/diholapp/react-native-dihola-shaking/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "DiHola Shaking API makes it easy to build fast and reliable ways to communicate between devices, just by shaking them. We provide such a secure and flexible protocol that this technology can be applied in any form of data exchange: Payment processing, file sharing, social networking, verification processes, etc.",
+  "homepage": "https://github.com/diholapp/react-native-dihola-shaking#readme",
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "name": "react-native-dihola-shaking",
   "peerDependencies": {
     "react-native": "^0.41.2",
     "react-native-windows": "0.41.0-rc.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diholapp/react-native-dihola-shaking.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
 }
