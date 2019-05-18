@@ -40,8 +40,10 @@
   "main": "index.js",
   "name": "react-native-dihola-shaking",
   "peerDependencies": {
-    "react-native": "^0.41.2",
-    "react-native-windows": "0.41.0-rc.1"
+    "react-native": "^0.41.2"
+  },
+  "dependencies": {
+    "rxjs": "6.5.2"
   },
   "repository": {
     "type": "git",
@@ -50,5 +52,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.0"
+  "version": "1.1.3"
 }
