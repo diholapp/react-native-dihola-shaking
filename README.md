@@ -19,6 +19,8 @@ Installation
 
 `$ react-native link react-native-dihola-shaking`
 
+**Note**: iOS step 5 and Android step 4 are required.
+
 ### Manual installation
 
 
@@ -28,6 +30,7 @@ Installation
 2. Go to `node_modules` ➜ `react-native-dihola-shaking` and add `RNDiHolaShaking.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libRNDiHolaShaking.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
+5. Permissions:
 
 #### Android
 
@@ -43,7 +46,36 @@ Installation
   	```
       compile project(':react-native-dihola-shaking')
   	```
-    
+4. If you've defined [project-wide properties](https://developer.android.com/studio/build/gradle-tips#configure-project-wide-properties) (recommended) in your root build.gradle, this library will detect the presence of the following properties:
+
+    ```gradle
+    buildscript {...}
+    allprojects {...}
+
+    /**
+     + Project-wide Gradle configuration properties
+     */
+    ext {
+        compileSdkVersion   = 25
+        targetSdkVersion    = 25
+        buildToolsVersion   = "25.0.2"
+        supportLibVersion   = "25.0.1"
+        googlePlayServicesVersion = "11.0.0"
+    }
+    ```
+
+    If you do not have *project-wide properties* defined and have a different play-services version than the one included in this library, use the following instead. But play service version should be `11+` or the library won't work.
+
+    ```gradle
+    ...
+    dependencies {
+        ...
+        compile(project(':react-native-dihola-shaking')) {
+            exclude group: 'com.google.android.gms', module: 'play-services-location'
+        }
+        compile 'com.google.android.gms:play-services-location:<insert your play service version here>'
+    }
+    ```
     
 Usage
 -------
