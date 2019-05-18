@@ -94,9 +94,9 @@ ShakingAPI.configure({
     },
     
     onSuccess: (result) => {
-      (result.length > 0) ? 
-        console.log("You connected with: " + result) :
-        console.log("Couldn't find anyone...");
+      (result.length > 0)
+        ? console.log("You connected with: " + result)
+        : console.log("Couldn't find anyone...");
     },
     
     onError: (error) => {
