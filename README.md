@@ -136,12 +136,12 @@ ShakingAPI.configure(options);
     | -- | -- | -- | -- | -- |
     | API_KEY | `string` | -- | `yes` | Get one at www.diholapp.com |
     | user | `string` | -- | `yes` |User identifier |
-    | lat | `double` | Device current location | `no` | Latitude coordinates
-    | lng | `double` | Device current location | `no` | Longitude coordinates
-    | sensibility | `double` | `25` | `no` | Shaking sensibility
-    | distanceFilter | `double` | `100` | `no` | Maximum distance (in meters) between two devices to be eligible for pairing.
-    | timingFilter | `double` | `2000` | `no` | Maximum time difference (in milliseconds) between two shaking events to be eligible for pairing.
-    | keepSearching | `bool` | `false` | `no` | A positive value would allow to keep searching even though if a user has been found. This could allow to pair with multiple devices. The response time will be affected by the timingFilter value.
+    | lat | `number` | Device current value | `no` | Latitude coordinates
+    | lng | `number` | Device current value | `no` | Longitude coordinates
+    | sensibility | `number` | `25` | `no` | Shaking sensibility
+    | distanceFilter | `number` | `100` | `no` | Maximum distance (in meters) between two devices to be eligible for pairing.
+    | timingFilter | `number` | `2000` | `no` | Maximum time difference (in milliseconds) between two shaking events to be eligible for pairing.
+    | keepSearching | `boolean` | `false` | `no` | A positive value would allow to keep searching even though if a user has been found. This could allow to pair with multiple devices. The response time will be affected by the timingFilter value.
     | onShaking | `function` | -- | `no` | Invoked when the shaking event is detected
     | onSuccess | `function` | -- | `yes` | Invoked with a list of paired users
     | onError | `function` | -- | `yes` | Invoked whenever an error is encountered
@@ -194,7 +194,7 @@ Sets the sensibility for the shaking event to be triggered.
 
 | Name        | Type     | Default|
 | ----------- | -------- | -------- |
-| sensibility| double     | 25      |
+| sensibility| number     | 25      |
 
 ---
 
@@ -211,7 +211,7 @@ Sets the maximum distance (in meters) between two devices to be eligible for pai
 
 | Name        | Type     | Default| Note|
 | ----------- | -------- | -------- | ----------------------------------------- |
-| distanceFilter| int     | 100  | GPS margin error must be taken into account        |
+| distanceFilter| number     | 100  | GPS margin error must be taken into account        |
 
 ---
 
@@ -228,7 +228,7 @@ Sets the maximum time difference (in milliseconds) between two shaking events to
 
 | Name        | Type     | Default| Note|
 | ----------- | -------- | -------- | -------- |
-| timingFilter| int   | 2000 | Value between 100 and 10000 |
+| timingFilter| number   | 2000 | Value between 100 and 10000 |
 
 ---
 
@@ -262,8 +262,8 @@ Setting the location manually will disable using the device location.
 
 | Name        | Type     | Default  |
 | ----------- | -------- | -------- |
-| latitude    | double   | Device current value|
-| longitude   | double   | Device current value|
+| latitude    | number   | Device current value|
+| longitude   | number   | Device current value|
 
 
 
