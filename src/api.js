@@ -219,10 +219,9 @@ export default ShakingAPI = {
       (position) => {
           this.lat = position.coords.latitude;
           this.lng = position.coords.longitude;
-          console.log(position)
       },
       (error) => {
-          // TODO: onError
+
           if(error.code === 1){
             this.onError(ShakingCodes.LOCATION_PERMISSION_ERROR);
           } 
@@ -230,7 +229,6 @@ export default ShakingAPI = {
             this.onError(ShakingCodes.LOCATION_DISABLED);
           } 
           
-          console.log(error.code, error.message);
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );

@@ -1,3 +1,13 @@
+
+/**
+* Original work: Copyright (c) 2017 Daniel Schmidt
+* Modified work: Copyright (c) 2019 DiHola S.L.
+*
+* This source code is licensed under the Apache 2.0 license found in 
+* https://github.com/diholapp/react-native-dihola-shaking/blob/master/LICENSE.
+*
+*/
+
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
 #import "RNDiholaShaking.h"

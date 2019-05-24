@@ -1,28 +1,27 @@
 {
-  "_from": "react-native-dihola-shaking",
-  "_id": "react-native-dihola-shaking@1.0.0",
+  "_from": "react-native-dihola-shaking@^1.1.2",
+  "_id": "react-native-dihola-shaking@1.1.5",
   "_inBundle": false,
-  "_integrity": "sha512-QsrMz29Pm/CHvg/V0ReMQ4soRlnOwKtLh7O4q4B3CsBKV9oNhI83kEId114CqGcxkKEn4xlABQsJaySth2FGxw==",
+  "_integrity": "sha512-N4BLcoPLaFUrmKMu4P7lm/PTvgzP5tFxnLxAHk+JkvMuus3SPTL+LLoA6TG/f6rTS+CyqfuVPtEW5mVWf91YuQ==",
   "_location": "/react-native-dihola-shaking",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "react-native-dihola-shaking",
+    "raw": "react-native-dihola-shaking@^1.1.2",
     "name": "react-native-dihola-shaking",
     "escapedName": "react-native-dihola-shaking",
-    "rawSpec": "",
+    "rawSpec": "^1.1.2",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^1.1.2"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/react-native-dihola-shaking/-/react-native-dihola-shaking-1.0.0.tgz",
-  "_shasum": "3a9d043bd9a12a553b9747deeb3c91add26ad7b3",
-  "_spec": "react-native-dihola-shaking",
-  "_where": "/Users/glow/Desktop/Projects/ShakingProjectRN",
+  "_resolved": "https://registry.npmjs.org/react-native-dihola-shaking/-/react-native-dihola-shaking-1.1.5.tgz",
+  "_shasum": "1c93558309bf7d4f563b6f07853f1b234eba1d59",
+  "_spec": "react-native-dihola-shaking@^1.1.2",
   "author": {
     "name": "DiHola S.L."
   },
@@ -30,6 +29,9 @@
     "url": "https://github.com/diholapp/react-native-dihola-shaking/issues"
   },
   "bundleDependencies": false,
+  "dependencies": {
+    "rxjs": "6.5.2"
+  },
   "deprecated": false,
   "description": "DiHola Shaking API makes it easy to build fast and reliable ways to communicate between devices, just by shaking them. We provide such a secure and flexible protocol that this technology can be applied in any form of data exchange: Payment processing, file sharing, social networking, verification processes, etc.",
   "homepage": "https://github.com/diholapp/react-native-dihola-shaking#readme",
@@ -42,9 +44,6 @@
   "peerDependencies": {
     "react-native": "^0.41.2"
   },
-  "dependencies": {
-    "rxjs": "6.5.2"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/diholapp/react-native-dihola-shaking.git"
@@ -52,5 +51,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.1.5"
+  "version": "1.1.6"
 }

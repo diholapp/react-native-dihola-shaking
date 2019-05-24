@@ -1,3 +1,10 @@
+/**
+* Copyright (c) 2019 DiHola S.L.
+*
+* This source code is licensed under the Apache 2.0 license found in 
+* https://github.com/diholapp/react-native-dihola-shaking/blob/master/LICENSE.
+*
+*/
 
 package com.diholapp;
 
