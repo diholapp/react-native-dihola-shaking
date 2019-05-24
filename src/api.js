@@ -10,6 +10,8 @@ const HEADERS = {
   'content-type': 'application/json'
 };
 
+const GRAVITY = 9.80665;
+
 export default ShakingAPI = {
 
   /*
@@ -32,7 +34,10 @@ export default ShakingAPI = {
   /*
   * Sensibility for the shaking event.
   */
-  sensibility: 40,
+  sensibility: Platform.select({
+    android: 40,
+    ios: 40 / GRAVITY
+  }),
 
   /*
   * Maximum time (in ms) between shaking events 
@@ -114,10 +119,10 @@ export default ShakingAPI = {
     this.API_KEY = API_KEY;
     this.user = user;
 
-    if (sensibility !== undefined) this.sensibility = sensibility;
-    if (timingFilter !== undefined) this.timingFilter = timingFilter;
-    if (distanceFilter !== undefined) this.distanceFilter = distanceFilter;
-    if (keepSearching !== undefined) this.keepSearching = keepSearching;
+    if (sensibility !== undefined) this.setSensibility(sensibility);
+    if (timingFilter !== undefined) this.setTimingFilter(timingFilter);
+    if (distanceFilter !== undefined) this.setDistanceFilter(distanceFilter);
+    if (keepSearching !== undefined) this.setKeepSearching(keepSearching);
 
     if(lat !== undefined && lng !== undefined){
       this.setLocation(lat, lng);
@@ -141,6 +146,7 @@ export default ShakingAPI = {
   },
 
   setSensibility: function(sensibility){
+    if(Platform.OS === 'ios') sensibility /= GRAVITY;
     this.sensibility = sensibility;
   },
 
