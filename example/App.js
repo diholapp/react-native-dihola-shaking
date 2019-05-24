@@ -22,7 +22,7 @@ export default class App extends Component {
 
     ShakingAPI.configure({
 
-      API_KEY: "qwerty",
+      API_KEY: "Get one at www.diholapp.com",
       user: this.state.myID,
 
       sensibility: 50,
