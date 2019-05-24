@@ -12,29 +12,72 @@ const HEADERS = {
 
 export default ShakingAPI = {
 
+  /*
+  * Client API key.
+  */
   API_KEY: "Get one at www.diholapp.com",
+
+  /*
+  * User unique identifier in the context of the app.
+  */
   user: "",
 
+  /*
+  * Latitude and longitude coordinates.
+  * Note: lat = lng = 0 is an invalid location.
+  */
   lat: 0,
   lng: 0,
+  
+  /*
+  * Sensibility for the shaking event.
+  */
+  sensibility: 40,
 
-  sensibility: 23.75,
+  /*
+  * Maximum time (in ms) between shaking events 
+  * to be elegible for pairing.
+  */
   timingFilter: 2000,
+
+  /*
+  * Maximum distance (in meters) 
+  * to be elegible for pairing.
+  */
   distanceFilter: 100,
+
+  /*
+  * Keep searching even if a user has been found.
+  * Allows to connect with multiple devices.
+  */
   keepSearching: false,
 
+  /*
+  * True if the location is provided programatically,
+  * otherwise the device location will be used.
+  */
   manualLocation: false,
 
+  /*
+  * Accelerometer subscription.
+  */
   subscription: null,
 
+  /*
+  * API status.
+  */
   stopped: true,
 
+  /*
+  * App State event listener. 
+  * Avoids shaking detection while in background.
+  */
   appStateEventListener: false,
 
   start: function(){
     this.stopped = false;
-    this.requestLocation();
-    this.subscribe();
+    this._requestLocation();
+    this._subscribe();
 
     if(!this.appStateEventListener){
       this.appStateEventListener = true;
@@ -50,7 +93,7 @@ export default ShakingAPI = {
   },
 
   simulate: function(){
-    this.connect();
+    this._connect();
   },
 
   configure: function(params){
@@ -113,23 +156,23 @@ export default ShakingAPI = {
     this.keepSearching = keepSearching;
   },
 
-  subscribe: function(){
+  _subscribe: function(){
     this.subscription = Sensors.createAccelerometer()
     .pipe(map(({ x, y, z }) => Math.abs(x) + Math.abs(y) + Math.abs(z)), filter(speed => speed > this.sensibility))
     .subscribe(
-      speed => this.onShakingEvent(),
+      speed => this._onShakingEvent(),
       error => this.onError(ShakingCodes.SENSOR_ERROR)
     )
   },
 
-  onShakingEvent: function(){
+  _onShakingEvent: function(){
     this.subscription.unsubscribe();
     this.onShaking && this.onShaking();
-    this.requestLocation();
-    this.connect();
+    this._requestLocation();
+    this._connect();
   },
 
-  connect: function(){
+  _connect: function(){
     
     let requestConfig = {
       method: 'POST',
@@ -148,19 +191,19 @@ export default ShakingAPI = {
 
     fetch(URL, requestConfig)
       .then(response => response.json())
-      .then(result => this.handleServerResponse(result))
+      .then(result => this._handleServerResponse(result))
       .catch(err => {
 
         this.onError(ShakingCodes.SERVER_ERROR);
         setTimeout(() => {
-          !this.stopped && this.subscribe()
+          !this.stopped && this._subscribe()
         }, 2000);
 
         console.log(err)
       })
   },
 
-  handleServerResponse: function(resp){
+  _handleServerResponse: function(resp){
     const { status, response } = resp;
 
     if(status.code == 200){
@@ -176,26 +219,26 @@ export default ShakingAPI = {
       this.onError(ShakingCodes.SERVER_ERROR);
     }
     
-    !this.stopped && this.subscribe();
+    !this.stopped && this._subscribe();
   },
 
-  requestLocation: async function() {
+  _requestLocation: async function() {
 
     if(this.manualLocation) return;
 
-    if(Platform.OS === 'ios') this.requestLocationIOS();
-    else this.requestLocationAndroid();
+    if(Platform.OS === 'ios') this._requestLocationIOS();
+    else this._requestLocationAndroid();
   },
 
-  requestLocationIOS: function(){
-    this.getCurrentPosition();
+  _requestLocationIOS: function(){
+    this._getCurrentPosition();
   },
 
-  requestLocationAndroid: async function(){
+  _requestLocationAndroid: async function(){
     try {
 
-      if (this.checkAndroidPermissions()) {
-        this.getCurrentPosition();
+      if (this._checkAndroidPermissions()) {
+        this._getCurrentPosition();
       } 
       else {
         this.onError(ShakingCodes.LOCATION_PERMISSION_ERROR);
@@ -206,7 +249,7 @@ export default ShakingAPI = {
     }
   },
 
-  checkAndroidPermissions: async function(){
+  _checkAndroidPermissions: async function(){
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
     )
@@ -214,7 +257,7 @@ export default ShakingAPI = {
     return PermissionsAndroid.RESULTS.GRANTED === granted || granted === true;
   },
 
-  getCurrentPosition: function(){
+  _getCurrentPosition: function(){
     Geolocation.getCurrentPosition(
       (position) => {
           this.lat = position.coords.latitude;
