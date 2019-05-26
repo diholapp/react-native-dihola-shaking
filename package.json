@@ -1,6 +1,6 @@
 {
-  "_from": "react-native-dihola-shaking@^1.1.2",
-  "_id": "react-native-dihola-shaking@1.1.5",
+  "_from": "react-native-dihola-shaking@^1.1.8",
+  "_id": "react-native-dihola-shaking@1.1.8",
   "_inBundle": false,
   "_integrity": "sha512-N4BLcoPLaFUrmKMu4P7lm/PTvgzP5tFxnLxAHk+JkvMuus3SPTL+LLoA6TG/f6rTS+CyqfuVPtEW5mVWf91YuQ==",
   "_location": "/react-native-dihola-shaking",
@@ -8,7 +8,7 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "react-native-dihola-shaking@^1.1.2",
+    "raw": "react-native-dihola-shaking@^1.1.8",
     "name": "react-native-dihola-shaking",
     "escapedName": "react-native-dihola-shaking",
     "rawSpec": "^1.1.2",
@@ -21,7 +21,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/react-native-dihola-shaking/-/react-native-dihola-shaking-1.1.5.tgz",
   "_shasum": "1c93558309bf7d4f563b6f07853f1b234eba1d59",
-  "_spec": "react-native-dihola-shaking@^1.1.2",
+  "_spec": "react-native-dihola-shaking@^1.1.8",
   "author": {
     "name": "DiHola S.L."
   },
@@ -51,5 +51,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.1.6"
+  "version": "1.1.8"
 }
