@@ -72,29 +72,52 @@ export default ShakingAPI = {
   * API status.
   */
   stopped: true,
-
-  /*
-  * App State event listener. 
-  * Avoids shaking detection while in background.
-  */
-  appStateEventListener: false,
+  paused: false,
+  processing: false,
+  
 
   start: function(){
-    this.stopped = false;
-    this._requestLocation();
-    this._subscribe();
 
-    if(!this.appStateEventListener){
-      this.appStateEventListener = true;
-      AppState.addEventListener('change', this._handleAppStateChange.bind(this));
+    if(this.stopped){
+
+      this.stopped = false;
+      this.paused = false;
+      
+      this._requestLocation();
+      this._subscribe();
+
+      AppState.addEventListener('change', this._handleAppStateChange);
     }
   },
 
   stop: function(){
-    this.stopped = true;
-    this.subscription && this.subscription.unsubscribe();
 
-    AppState.removeEventListener('change', this._handleAppStateChange.bind(this));
+    if(!this.stopped){
+
+      this.stopped = true;
+      this.paused = false;
+      this.processing = false;
+
+      this.subscription && this.subscription.unsubscribe();
+
+      AppState.removeEventListener('change', this._handleAppStateChange);
+    }
+  },
+
+  _restart: function(){
+
+    if(!this.stopped && !this.processing && this.paused){
+      this.paused = false;
+      this._requestLocation();
+      this._subscribe();
+    }
+  },
+
+  _pause: function(){
+    if(!this.paused){
+      this.paused = true;
+      this.subscription && this.subscription.unsubscribe();
+    }
   },
 
   simulate: function(){
@@ -131,6 +154,8 @@ export default ShakingAPI = {
     this.onShaking = onShaking;
     this.onSuccess = onSuccess;
     this.onError = onError;
+    
+    this._handleAppStateChange = this._handleAppStateChange.bind(this);
 
     return this;
   },
@@ -172,7 +197,7 @@ export default ShakingAPI = {
   },
 
   _onShakingEvent: function(){
-    this.subscription.unsubscribe();
+    this._pause();
     this.onShaking && this.onShaking();
     this._requestLocation();
     this._connect();
@@ -180,6 +205,8 @@ export default ShakingAPI = {
 
   _connect: function(){
     
+    this.processing = true;
+
     let requestConfig = {
       method: 'POST',
       headers: HEADERS,
@@ -200,9 +227,10 @@ export default ShakingAPI = {
       .then(result => this._handleServerResponse(result))
       .catch(err => {
 
+        this.processing = false;
         this.onError(ShakingCodes.SERVER_ERROR);
         setTimeout(() => {
-          !this.stopped && this._subscribe()
+          this._restart()
         }, 2000);
 
         console.log(err)
@@ -225,7 +253,8 @@ export default ShakingAPI = {
       this.onError(ShakingCodes.SERVER_ERROR);
     }
     
-    !this.stopped && this._subscribe();
+    this.processing = false;
+    this._restart();
   },
 
   _requestLocation: async function() {
@@ -284,11 +313,12 @@ export default ShakingAPI = {
   },
 
   _handleAppStateChange: function(nextAppState) {
+
     if (nextAppState === 'active') {
-      this.start();
+      this._restart();
     }
     else {
-      this.stop();
+      this._pause();
     }
   }
 }

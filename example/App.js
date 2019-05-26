@@ -42,6 +42,10 @@ export default class App extends Component {
 
   }
 
+  componentWillUnmount(){
+    ShakingAPI.stop();
+  }
+
   render() {
     const { myID, shaken } = this.state;
     return (
