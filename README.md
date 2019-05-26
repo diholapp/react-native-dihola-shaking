@@ -105,6 +105,7 @@ ShakingAPI.configure({
     
 }).start();
 ```
+[Here](https://github.com/diholapp/react-native-dihola-shaking/blob/master/example/App.js) you can find an example.
 
 Methods
 -------
