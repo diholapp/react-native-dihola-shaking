@@ -76,6 +76,13 @@ export default ShakingAPI = {
   processing: false,
   
 
+  /*
+  * App State event listener. 
+  * Avoids shaking detection while in background.
+  */
+  appStateEventListener: false,
+  
+
   start: function(){
 
     if(this.stopped){
@@ -163,7 +170,7 @@ export default ShakingAPI = {
   setLocation: function(lat, lng){
     this.lat = lat;
     this.lng = lng;
-    this.manualLocation = false;
+    this.manualLocation = true;
   },
 
   setUser: function(user){

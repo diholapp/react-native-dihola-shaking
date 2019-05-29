@@ -1,27 +1,28 @@
 {
-  "_from": "react-native-dihola-shaking@^1.2.0",
-  "_id": "react-native-dihola-shaking@1.2.0",
+  "_from": "react-native-dihola-shaking@^1.3.0",
+  "_id": "react-native-dihola-shaking@1.3.0",
   "_inBundle": false,
-  "_integrity": "sha512-N4BLcoPLaFUrmKMu4P7lm/PTvgzP5tFxnLxAHk+JkvMuus3SPTL+LLoA6TG/f6rTS+CyqfuVPtEW5mVWf91YuQ==",
+  "_integrity": "sha512-IYw1SWnw6teubNGbl9ZEJ2YRMlws7lBkgxTv4ITtp7yoUM4Dca84JHCUVxNB0t5yiK/pJsuKgW3/dppR+HvdOg==",
   "_location": "/react-native-dihola-shaking",
   "_phantomChildren": {},
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "react-native-dihola-shaking@^1.2.0",
+    "raw": "react-native-dihola-shaking@^1.3.0",
     "name": "react-native-dihola-shaking",
     "escapedName": "react-native-dihola-shaking",
-    "rawSpec": "^1.1.2",
+    "rawSpec": "^1.3.0",
     "saveSpec": null,
-    "fetchSpec": "^1.1.2"
+    "fetchSpec": "^1.3.0"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/react-native-dihola-shaking/-/react-native-dihola-shaking-1.1.5.tgz",
-  "_shasum": "1c93558309bf7d4f563b6f07853f1b234eba1d59",
-  "_spec": "react-native-dihola-shaking@^1.2.0",
+  "_resolved": "https://registry.npmjs.org/react-native-dihola-shaking/-/react-native-dihola-shaking-1.3.0.tgz",
+  "_shasum": "ebc18136e89601a9418c878f6ab6fbad162940b6",
+  "_spec": "react-native-dihola-shaking@^1.3.0",
+  "_where": "/Users/glow/Desktop/Projects/ShakingProjectRN",
   "author": {
     "name": "DiHola S.L."
   },
@@ -51,5 +52,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.2.0"
+  "version": "1.3.0"
 }
