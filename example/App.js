@@ -29,10 +29,7 @@ export default class App extends Component {
       timingFilter: 2000,
       keepSearching: true,
 
-      onShaking: () => {
-        Vibration.vibrate();
-        this.setState({ shaken: 1, loading: 1 });
-      },
+      onShaking: () => this.setState({ shaken: 1, loading: 1 }),
 
       onSuccess: (result) => this.setState({ result, error: 0, loading: 0 }),
 

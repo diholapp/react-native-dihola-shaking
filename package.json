@@ -1,6 +1,6 @@
 {
-  "_from": "react-native-dihola-shaking@^1.3.0",
-  "_id": "react-native-dihola-shaking@1.3.0",
+  "_from": "react-native-dihola-shaking@^1.3.2",
+  "_id": "react-native-dihola-shaking@1.3.2",
   "_inBundle": false,
   "_integrity": "sha512-IYw1SWnw6teubNGbl9ZEJ2YRMlws7lBkgxTv4ITtp7yoUM4Dca84JHCUVxNB0t5yiK/pJsuKgW3/dppR+HvdOg==",
   "_location": "/react-native-dihola-shaking",
@@ -8,20 +8,20 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "react-native-dihola-shaking@^1.3.0",
+    "raw": "react-native-dihola-shaking@^1.3.2",
     "name": "react-native-dihola-shaking",
     "escapedName": "react-native-dihola-shaking",
-    "rawSpec": "^1.3.0",
+    "rawSpec": "^1.3.2",
     "saveSpec": null,
-    "fetchSpec": "^1.3.0"
+    "fetchSpec": "^1.3.2"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/react-native-dihola-shaking/-/react-native-dihola-shaking-1.3.0.tgz",
+  "_resolved": "https://registry.npmjs.org/react-native-dihola-shaking/-/react-native-dihola-shaking-1.3.2.tgz",
   "_shasum": "ebc18136e89601a9418c878f6ab6fbad162940b6",
-  "_spec": "react-native-dihola-shaking@^1.3.0",
+  "_spec": "react-native-dihola-shaking@^1.3.2",
   "_where": "/Users/glow/Desktop/Projects/ShakingProjectRN",
   "author": {
     "name": "DiHola S.L."
@@ -52,5 +52,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.3.0"
+  "version": "1.3.2"
 }

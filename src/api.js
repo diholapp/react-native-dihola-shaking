@@ -1,4 +1,4 @@
-import { PermissionsAndroid, Platform, AppState } from "react-native";
+import { PermissionsAndroid, Platform, AppState, Vibration } from "react-native";
 import { map, filter } from "rxjs/operators";
 import * as Sensors from "./sensors";
 import ShakingCodes from "./codes";
@@ -77,10 +77,9 @@ export default ShakingAPI = {
   
 
   /*
-  * App State event listener. 
-  * Avoids shaking detection while in background.
+  * Vibrate on shaking.
   */
-  appStateEventListener: false,
+  vibrate: true,
   
 
   start: function(){
@@ -141,6 +140,7 @@ export default ShakingAPI = {
       timingFilter, 
       distanceFilter, 
       keepSearching,
+      vibrate,
       onShaking,
       onSuccess,
       onError
@@ -153,6 +153,7 @@ export default ShakingAPI = {
     if (timingFilter !== undefined) this.setTimingFilter(timingFilter);
     if (distanceFilter !== undefined) this.setDistanceFilter(distanceFilter);
     if (keepSearching !== undefined) this.setKeepSearching(keepSearching);
+    if (vibrate !== undefined) this.vibrate = vibrate;
 
     if(lat !== undefined && lng !== undefined){
       this.setLocation(lat, lng);
@@ -205,6 +206,7 @@ export default ShakingAPI = {
 
   _onShakingEvent: function(){
     this._pause();
+    this.vibrate && Vibration.vibrate();
     this.onShaking && this.onShaking();
     this._requestLocation();
     this._connect();
@@ -286,7 +288,6 @@ export default ShakingAPI = {
         this.onError(ShakingCodes.LOCATION_PERMISSION_ERROR);
       }
     } catch (err) {
-      // TODO: onError
       console.warn(err)
     }
   },

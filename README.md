@@ -143,6 +143,7 @@ ShakingAPI.configure(options);
     | distanceFilter | `number` | `100` | `no` | Maximum distance (in meters) between two devices to be eligible for pairing.
     | timingFilter | `number` | `2000` | `no` | Maximum time difference (in milliseconds) between two shaking events to be eligible for pairing.
     | keepSearching | `boolean` | `false` | `no` | A positive value would allow to keep searching even though if a user has been found. This could allow to pair with multiple devices. The response time will be affected by the timingFilter value.
+    | vibrate | `boolean` | `true` | `no` | Vibrate on shaking.
     | onShaking | `function` | -- | `no` | Invoked when the shaking event is detected
     | onSuccess | `function` | -- | `yes` | Invoked with a list of paired users
     | onError | `function` | -- | `yes` | Invoked whenever an error is encountered
