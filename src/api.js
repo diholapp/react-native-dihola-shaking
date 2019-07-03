@@ -281,23 +281,29 @@ export default ShakingAPI = {
   _requestLocationAndroid: async function(){
     try {
 
-      if (this._checkAndroidPermissions()) {
+      const permission = await this._checkAndroidPermissions();
+      if (PermissionsAndroid.RESULTS.GRANTED === permission || permission === true) {
         this._getCurrentPosition();
       } 
+      else if (permission === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
+        this.onError(ShakingCodes.LOCATION_PERMISSION_ERROR);
+        this.stop();
+      }
       else {
         this.onError(ShakingCodes.LOCATION_PERMISSION_ERROR);
       }
+
     } catch (err) {
       console.warn(err)
     }
   },
 
   _checkAndroidPermissions: async function(){
-    const granted = await PermissionsAndroid.request(
+    const permission = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
     )
     // In Android SDK versions lower than 23, granted is a bool
-    return PermissionsAndroid.RESULTS.GRANTED === granted || granted === true;
+    return permission;
   },
 
   _getCurrentPosition: function(){
@@ -316,7 +322,7 @@ export default ShakingAPI = {
           } 
           
       },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+      { enableHighAccuracy: true, timeout: 5000, maximumAge: 10000 }
     );
   },
 
