@@ -74,6 +74,7 @@ export default ShakingAPI = {
   stopped: true,
   paused: false,
   processing: false,
+  background: false,
   
 
   /*
@@ -112,7 +113,7 @@ export default ShakingAPI = {
 
   _restart: function(){
 
-    if(!this.stopped && !this.processing && this.paused){
+    if(!this.stopped && !this.processing && this.paused && !this.background){
       this.paused = false;
       this._requestLocation();
       this._subscribe();
@@ -329,9 +330,11 @@ export default ShakingAPI = {
   _handleAppStateChange: function(nextAppState) {
 
     if (nextAppState === 'active') {
+      this.background = false;
       this._restart();
     }
     else {
+      this.background = true;
       this._pause();
     }
   }
